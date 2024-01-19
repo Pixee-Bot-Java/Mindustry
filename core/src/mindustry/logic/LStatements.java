@@ -236,7 +236,7 @@ public class LStatements{
         @Override
         public void afterRead(){
             //0 constant alpha for colors is not allowed
-            if(type == GraphicsType.color && p2.equals("0")){
+            if(type == GraphicsType.color && "0".equals(p2)){
                 p2 = "255";
             }
         }
@@ -1329,11 +1329,11 @@ public class LStatements{
             table.add("natural ");
             fields(table, natural, str -> natural = str);
 
-            table.add("x ").visible(() -> natural.equals("false"));
-            fields(table, x, str -> x = str).visible(() -> natural.equals("false"));
+            table.add("x ").visible(() -> "false".equals(natural));
+            fields(table, x, str -> x = str).visible(() -> "false".equals(natural));
 
-            table.add(" y ").visible(() -> natural.equals("false"));
-            fields(table, y, str -> y = str).visible(() -> natural.equals("false"));
+            table.add(" y ").visible(() -> "false".equals(natural));
+            fields(table, y, str -> y = str).visible(() -> "false".equals(natural));
         }
 
         @Override

@@ -98,7 +98,7 @@ public class Net{
 
             if(e instanceof BufferUnderflowException || e instanceof BufferOverflowException || e.getCause() instanceof EOFException){
                 error = Core.bundle.get("error.io");
-            }else if(error.equals("mismatch") || e instanceof LZ4Exception || (e instanceof IndexOutOfBoundsException && e.getStackTrace().length > 0 && e.getStackTrace()[0].getClassName().contains("java.nio"))){
+            }else if("mismatch".equals(error) || e instanceof LZ4Exception || (e instanceof IndexOutOfBoundsException && e.getStackTrace().length > 0 && e.getStackTrace()[0].getClassName().contains("java.nio"))){
                 error = Core.bundle.get("error.mismatch");
             }else if(error.contains("port out of range") || error.contains("invalid argument") || (error.contains("invalid") && error.contains("address")) || Strings.neatError(e).contains("address associated")){
                 error = Core.bundle.get("error.invalidaddress");
@@ -106,7 +106,7 @@ public class Net{
                 error = Core.bundle.get("error.unreachable");
             }else if(type.contains("timeout")){
                 error = Core.bundle.get("error.timedout");
-            }else if(error.equals("alreadyconnected") || error.contains("connection is closed")){
+            }else if("alreadyconnected".equals(error) || error.contains("connection is closed")){
                 error = Core.bundle.get("error.alreadyconnected");
             }else if(!error.isEmpty()){
                 error = Core.bundle.get("error.any");
